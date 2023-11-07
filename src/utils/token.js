@@ -31,4 +31,5 @@ const createToken = async (req, res, next) => {
 
 module.exports = {
   createToken,
+  generateToken,
 };
