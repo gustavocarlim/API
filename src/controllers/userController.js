@@ -1,3 +1,4 @@
+const { User } = require('../models');
 const { userService } = require('../services/userService');
 
 const postUser = async (req, res) => {
@@ -12,4 +13,24 @@ const getAllUsers = async (_req, res) => {
 
   return res.status(status).json(data);
 };
-module.exports = { postUser, getAllUsers };
+
+const getUserById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByPk(id, {
+      attributes: { exclude: ['password'] },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User does not exist' });
+    }
+
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error('Erro ao buscar usuário por ID:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+module.exports = { postUser, getAllUsers, getUserById };
