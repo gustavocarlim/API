@@ -1,4 +1,4 @@
-const { userService } = require('../services');
+const { userService } = require('../services/userService');
 
 const postUser = async (req, res) => {
   const { displayName, email, password, image } = req.body;
@@ -7,4 +7,9 @@ const postUser = async (req, res) => {
   res.status(status).json({ token });
 };
 
-module.exports = { postUser };
+const getAllUsers = async (_req, res) => {
+  const { status, data } = await userService.getAllUsers();
+
+  return res.status(status).json(data);
+};
+module.exports = { postUser, getAllUsers };
