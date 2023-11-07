@@ -1,6 +1,8 @@
-const routePost = require('express').Router();
-const Controllers = require('../controllers');
+const route = require('express').Router();
+const { loginController } = require('../controllers');
+const { createToken } = require('../utils/token');
+const { checkIfUserIsNotRegistred } = require('../middlewares/validateToken');
 
-routePost.get('/', Controllers.post.getAll);
+route.post('/', createToken, checkIfUserIsNotRegistred, loginController.userLogin);
 
-module.exports = routePost;
+module.exports = route;

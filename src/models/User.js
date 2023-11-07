@@ -8,9 +8,9 @@ const UserSchema = (sequelize, DataTypes) => {
 	displayName: DataTypes.STRING,
 	email: DataTypes.STRING,
 	password: DataTypes.STRING,
-  image: DataTypes.STRING,
+	image: DataTypes.STRING,
 }, {
-	tableName: 'user',
+	tableName: 'users',
 	underscored: true,
 	timestamps: false
 });
