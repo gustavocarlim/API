@@ -5,12 +5,14 @@ const CategoryModel = (sequelize, DataTypes) => {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
       },
       name: DataTypes.STRING(255),
     },
     {
       tableName: 'categories',
       underscored: true,
+      timestamps: false,
     }
   );
 
