@@ -1,13 +1,13 @@
-const PostCategoryModel = (sequelize,Datatypes) => {
+const PostCategoryModel = (sequelize, _Datatypes) => {
     const PostCategory = sequelize.define(
       'PostCategory', {
-        postId: Datatypes.INTEGER,
-        categoryId: Datatypes.INTEGER,
+        postId: { type: _Datatypes.INTEGER, foreignKey: true },
+        categoryId: { type: _Datatypes.INTEGER, foreignKey: true }
       },
       {
         tableName: 'posts_categories',
-        underscored: true
-  
+        underscored: true,
+        timestamps: false
       }
     )
   

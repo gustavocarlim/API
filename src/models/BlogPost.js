@@ -5,6 +5,7 @@ const BlogPostModel = (sequelize, DataTypes) => {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
       },
       title: DataTypes.STRING(255),
       content: DataTypes.STRING(255),
@@ -15,6 +16,7 @@ const BlogPostModel = (sequelize, DataTypes) => {
     {
       tableName: 'blog_posts',
       underscored: true,
+      timestamps: false,  
     }
   );
 
